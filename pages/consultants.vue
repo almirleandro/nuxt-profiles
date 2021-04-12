@@ -89,6 +89,10 @@ export default {
         this.$router.push("/");
       }
     });
+
+    const res = await fetch(`https://nuxt-profiles-server.herokuapp.com/users`);
+    const data = await res.json();
+    this.users = data;
   }
 };
 </script>

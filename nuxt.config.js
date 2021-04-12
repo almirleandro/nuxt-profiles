@@ -1,6 +1,8 @@
+import axios from "axios";
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: "server",
+  target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -33,5 +35,16 @@ export default {
   auth: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
+  generate: {
+    async routes() {
+      const res = await axios.get(
+        "https://nuxt-profiles-server.herokuapp.com/users"
+      );
+      return res.data.map(user => {
+        return "/profiles/" + user.id;
+      });
+    }
+  }
 };
