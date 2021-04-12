@@ -81,7 +81,7 @@ export default {
       this.users = data;
     }
   },
-  mounted() {
+  async mounted() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.currentUser = user;
