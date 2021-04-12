@@ -10,12 +10,14 @@
             placeholder="Email"
             v-model="login.logEmail"
             class="logEmail"
+            required
           /><br />
           <input
             type="password"
             placeholder="Senha"
             v-model="login.logPass"
             class="logPass"
+            required
           /><br />
           <button id="login-btn">Login</button>
         </form>
@@ -32,23 +34,34 @@
             placeholder="Primeiro Nome"
             v-model="register.regFirstName"
             @change="companyEmail"
+            required
           /><br />
           <input
             placeholder="Último Nome"
             v-model="register.regLastName"
             @change="companyEmail"
+            required
           /><br />
-          <input
-            placeholder="País"
-            :value="register.regCountry"
-            class="regEmail"
-            readonly
-          /><br />
+          <select
+            name="country"
+            id="country"
+            v-model="register.regCountry"
+            required
+          >
+            <option value="Brazil" selected>Brazil</option>
+            <option value="Canada">Canada</option>
+            <option value="Mexico">Mexico</option> </select
+          ><br />
           <input
             placeholder="Cidade do Escritório"
             v-model="register.regCity"
+            required
           /><br />
-          <input placeholder="Cargo" v-model="register.regTitle" /><br />
+          <input
+            placeholder="Cargo"
+            v-model="register.regTitle"
+            required
+          /><br />
           <input
             placeholder="Email"
             :value="register.regEmail"
@@ -59,6 +72,7 @@
             type="password"
             placeholder="Senha"
             v-model="register.regPass"
+            required
           /><br />
           <span class="passMessage"
             >* A senha precisa ter mais de 6 caracteres</span
@@ -186,7 +200,8 @@ export default {
   margin-bottom: 20px;
 }
 
-.authContainer input {
+.authContainer input,
+.authContainer select {
   font-size: 17px;
   padding: 6px;
   margin-top: 10px;
@@ -199,6 +214,11 @@ export default {
   margin-top: 0px;
   padding: 6px 20px;
   outline: none;
+}
+
+.authContainer select {
+  min-width: 228px;
+  border: 1px solid rgb(118, 118, 118);
 }
 
 #login-btn {
