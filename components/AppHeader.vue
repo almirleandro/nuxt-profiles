@@ -80,6 +80,9 @@ export default {
     }
   },
   mounted() {
+    setTimeout(() => {
+      this.$nuxt.refresh();
+    }, 1000);
     firebase.auth().onAuthStateChanged(async user => {
       if (user) {
         this.currentUser = user;

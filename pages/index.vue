@@ -130,6 +130,7 @@ export default {
               regEmail: this.register.regEmail
             })
           });
+          this.refreshData();
         })
         .catch(err => {
           this.errors = err;
@@ -144,6 +145,11 @@ export default {
           "@valtech.com";
         this.register.regEmail = email;
       }
+    },
+    refreshData() {
+      setTimeout(() => {
+        this.$nuxt.refresh();
+      }, 4000);
     }
   }
 };
